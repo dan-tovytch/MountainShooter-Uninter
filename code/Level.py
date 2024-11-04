@@ -9,7 +9,7 @@ from pygame.font import Font
 
 from code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN, EVENT_TIMEOUT, \
     TIMEOUT_STEP, TIMEOUT_LEVEL, WIN_WIDTH
-from code.Enemy import Enemy, Enemy3
+from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
@@ -36,17 +36,20 @@ class Level:
 
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
-
+        # --------- Add Aqui -----------    
         if self.name == 'Level3':
             self.entity_list.append(EntityFactory.get_entity('Enemy3'))
+        # ----------------------        
 
     def run(self, player_score: list[int]):
+        # --------- Add Aqui -----------    
         if self.name == 'Level3':
             pygame.mixer_music.load(f'./asset/Level3.mp3')
             self.timeout = TIMEOUT_LEVEL * 2
             pygame.time.set_timer(EVENT_ENEMY, 0)
         else:
             pygame.mixer_music.load(f'./asset/{self.name}.mp3')
+        # ----------------------            
 
         pygame.mixer_music.set_volume(0.3)
         pygame.mixer_music.play(-1)
@@ -70,9 +73,11 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                # --------- Add Aqui -----------    
                 if event.type == EVENT_ENEMY and self.name != 'Level3':
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
+                # ----------------------            
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:

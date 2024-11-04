@@ -29,8 +29,9 @@ class Menu:
                     self.menu_text(20, MENU_OPTION[i], C_YELLOW, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
                     self.menu_text(20, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
-
+            # --------- Add Aqui -----------        
             self.menu_text(20, "Daniel Melentovytch Santos - RU: 4464640", C_WHITE,(WIN_WIDTH - 150, 10)) 
+            # ----------------------      
             pygame.display.flip()
 
             # Check for all events
