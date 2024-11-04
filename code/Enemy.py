@@ -22,7 +22,6 @@ class Enemy(Entity):
     def move(self):
         if self.name == "Enemy3":
              # --------- Add Aqui ----------- 
-            # Movimento horizontal
             self.rect.centerx += ENTITY_SPEED[self.name] * self.direction_x
             
             if self.rect.left <= WIN_WIDTH * 0.4: 
